@@ -142,7 +142,6 @@ def select_context_fields(
     current: Any = feature  # Type can change as we navigate through nested structures
     navigated_path = []
     successfully_navigated = True
-    stop_at_geometry = False
 
     for i, element in enumerate(error_path):
         navigated_path.append(element)
@@ -152,7 +151,6 @@ def select_context_fields(
             # Include geometry but don't navigate deeper
             if isinstance(current, dict) and element in current:
                 current = current[element]
-            stop_at_geometry = True
             # Check if there are more elements after geometry
             if i + 1 < len(error_path):
                 successfully_navigated = False
@@ -376,8 +374,8 @@ def select_context_fields(
 
 
 def format_field_value(
-    value: Any,
-    max_length: int = DEFAULT_FIELD_VALUE_MAX_LENGTH,  # noqa: ANN401
+    value: object,
+    max_length: int = DEFAULT_FIELD_VALUE_MAX_LENGTH,
 ) -> str:
     """Format a field value for display.
 

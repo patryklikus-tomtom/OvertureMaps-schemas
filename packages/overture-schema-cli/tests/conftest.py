@@ -72,11 +72,11 @@ properties:
 
 def build_feature(
     id: str | None = "test",
-    theme: str = "buildings",
+    theme: str | None = "buildings",
     type: str = "building",
     geometry_type: str = "Polygon",
     coordinates: list | None = None,
-    version: int = 0,
+    version: int | None = 0,
     geojson_format: bool = True,
     **properties: Any,
 ) -> dict[str, Any]:
@@ -84,11 +84,11 @@ def build_feature(
 
     Args:
         id: Feature ID (None to omit)
-        theme: Theme name
+        theme: Theme name (None to omit)
         type: Feature type
         geometry_type: Geometry type (Point, Polygon, etc.)
         coordinates: Custom coordinates (None for sensible defaults)
-        version: Feature version
+        version: Feature version (None to omit)
         geojson_format: If True, use GeoJSON format; if False, use flat format
         **properties: Additional properties to include
 
@@ -113,27 +113,32 @@ def build_feature(
     feature: dict[str, Any]
     if geojson_format:
         # GeoJSON format: properties nested under "properties" key
+        props: dict[str, Any] = {
+            "type": type,
+            **properties,
+        }
+        if theme is not None:
+            props["theme"] = theme
+        if version is not None:
+            props["version"] = version
+
         feature = {
             "type": "Feature",
             "geometry": geometry,
-            "properties": {
-                "theme": theme,
-                "type": type,
-                "version": version,
-                **properties,
-            },
+            "properties": props,
         }
         if id is not None:
             feature["id"] = id
     else:
         # Flat format: properties at top level
-        feature = {
-            "geometry": geometry,
-            "theme": theme,
-            "type": type,
-            "version": version,
-            **properties,
-        }
+        # Build in the expected order: geometry, theme, type, version, id, properties
+        feature = {"geometry": geometry}
+        if theme is not None:
+            feature["theme"] = theme
+        feature["type"] = type
+        if version is not None:
+            feature["version"] = version
+        feature.update(properties)
         if id is not None:
             feature["id"] = id
 
