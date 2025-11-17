@@ -10,7 +10,6 @@ resolution-markers = [
 members = [
     "overture-schema",
     "overture-schema-addresses-theme",
-    "overture-schema-annex",
     "overture-schema-base-theme",
     "overture-schema-buildings-theme",
     "overture-schema-cli",
