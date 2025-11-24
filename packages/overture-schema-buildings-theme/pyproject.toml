@@ -5,7 +5,6 @@ dependencies = [
 ]
 description = "Overture Maps buildings theme shared structures, building types, and building part types"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema-buildings-theme"
 readme = "README.md"
 requires-python = ">=3.10"

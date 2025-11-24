@@ -5,7 +5,6 @@ dependencies = [
 ]
 description = "Overture Maps transportation theme with shared structures and connector and segment types"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema-transportation-theme"
 readme = "README.md"
 requires-python = ">=3.10"

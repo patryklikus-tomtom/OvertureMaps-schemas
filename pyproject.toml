@@ -1,7 +1,6 @@
 # uv workspace configuration
 
 [project]
-license = "MIT"
 name = "overture-schema-workspace"
 requires-python = ">=3.10"
 version = "0.0.0"

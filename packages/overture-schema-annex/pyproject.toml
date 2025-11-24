@@ -5,7 +5,6 @@ dependencies = [
 ]
 description = "Add your description here"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema-annex"
 readme = "README.md"
 requires-python = ">=3.10"

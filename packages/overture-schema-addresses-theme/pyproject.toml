@@ -5,7 +5,6 @@ dependencies = [
 ]
 description = "Overture Maps addresses theme models and structures"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema-addresses-theme"
 readme = "README.md"
 requires-python = ">=3.10"
