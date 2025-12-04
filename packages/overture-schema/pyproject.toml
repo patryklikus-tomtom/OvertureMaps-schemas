@@ -13,7 +13,6 @@ dependencies = [
 ]
 description = "Complete Overture Maps schema collection with all themes and types"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema"
 readme = "README.md"
 requires-python = ">=3.10"
