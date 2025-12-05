@@ -57,7 +57,9 @@ class ModelConstraint:
         self.__name = name
 
     def __validate_instance(self, model_instance: BaseModel) -> BaseModel:
-        self.validate_instance(model_instance)
+        method = getattr(self, "validate_instance", None)
+        if callable(method):
+            method(model_instance)
         return model_instance
 
     @property
