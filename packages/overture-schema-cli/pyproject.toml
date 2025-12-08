@@ -9,7 +9,6 @@ dependencies = [
 ]
 description = "Command-line interface for Overture Maps schema validation and JSON Schema generation"
 dynamic = ["version"]
-license = "MIT"
 name = "overture-schema-cli"
 readme = "README.md"
 requires-python = ">=3.10"
